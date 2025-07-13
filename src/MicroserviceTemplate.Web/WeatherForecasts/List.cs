@@ -7,7 +7,7 @@ public class List(ISender _sender) : EndpointWithoutRequest<WeatherForecastListR
 {
   public override void Configure()
   {
-    Get("/GetWeatherForecast");
+    Get("/weatherforecast");
     AllowAnonymous();
   }
 
