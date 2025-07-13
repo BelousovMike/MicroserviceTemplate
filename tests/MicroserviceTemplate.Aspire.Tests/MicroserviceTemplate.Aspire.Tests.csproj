@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MicroserviceTemplate.AppHost\MicroserviceTemplate.AppHost.csproj" />
+    <ProjectReference Include="..\..\src\MicroserviceTemplate.AspireHost\MicroserviceTemplate.AspireHost.csproj" />
   </ItemGroup>
   
 </Project>

@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceTemplate.UseCas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceTemplate.Web", "src\MicroserviceTemplate.Web\MicroserviceTemplate.Web.csproj", "{0B3B30B4-E22B-4EE5-9998-553D0D14058E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceTemplate.AppHost", "src\MicroserviceTemplate.AppHost\MicroserviceTemplate.AppHost.csproj", "{50860412-36A8-452B-BFB7-B4713418EAE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceTemplate.AspireHost", "src\MicroserviceTemplate.AspireHost\MicroserviceTemplate.AspireHost.csproj", "{50860412-36A8-452B-BFB7-B4713418EAE0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{77F93E53-BBA9-4314-ACF1-1B08AF40A587}"
 EndProject

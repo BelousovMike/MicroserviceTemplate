@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "BelousovMike",
+  "classifications": [
+    "Web",
+    "ASP.NET",
+    "Microservice",
+    "Template"
+  ],
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "identity": "Microservice.Template",
+  "name": "'Base Microservice'",
+  "shortName": "microservice-template",
+  "sourceName": "MicroserviceTemplate",
+  "preferNameDirectory": true,
+  "symbols": {
+    "aspire": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Include .NET Aspire."
+    }
+  },
+  "sources": [
+    {
+      "exclude": [ 
+        ".vs/**",
+        ".vscode/**",
+        ".git/**",
+        ".github/**",
+        ".template.config",
+        "sample/**"
+      ],
+      "modifiers": [
+        {
+          "condition": "(!aspire)",
+          "exclude": [
+            "src/MicroserviceTemplate.AspireHost/**",
+            "src/MicroserviceTemplate.ServiceDefaults/**",
+            "tests/MicroserviceTemplate.AspireTests/**"
+          ]
+        },
+        {
+          "condition": "(aspire)",
+          "include": [
+            "src/MicroserviceTemplate.AspireHost/**",
+            "src/MicroserviceTemplate.ServiceDefaults/**",
+            "tests/MicroserviceTemplate.AspireTests/**"
+          ]
+        }
+      ]
+    }
+  ]
+}
