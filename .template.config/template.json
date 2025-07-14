@@ -12,9 +12,9 @@
     "type": "project"
   },
   "identity": "Microservice.Template",
-  "name": "'Base Microservice'",
+  "name": "'Microservice Template'",
   "shortName": "microservice-template",
-  "sourceName": "MicroserviceTemplate",
+  "sourceName": "Microservice.Template",
   "preferNameDirectory": true,
   "symbols": {
     "aspire": {
@@ -26,6 +26,18 @@
   },
   "sources": [
     {
+      "httpPort": {
+        "type": "parameter",
+        "description": "http port",
+        "defaultValue": "5001",
+        "replaces": "{HTTP_PORT}"
+      },
+      "httpsPort": {
+        "type": "parameter",
+        "description": "https port",
+        "defaultValue": "5000",
+        "replaces": "{HTTPS_PORT}"
+      },
       "exclude": [ 
         ".vs/**",
         ".vscode/**",
