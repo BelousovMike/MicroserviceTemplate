@@ -1,5 +1,7 @@
 <Project>
   <ItemGroup>
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" />
+    <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0" />
     <PackageVersion Include="Ardalis.GuardClauses" Version="5.0.0" />
     <PackageVersion Include="Ardalis.HttpClientTestExtensions" Version="4.2.0" />
     <PackageVersion Include="Ardalis.ListStartupServices" Version="1.1.4" />

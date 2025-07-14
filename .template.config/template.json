@@ -12,7 +12,7 @@
     "type": "project"
   },
   "identity": "Microservice.Template",
-  "name": "'Microservice Template'",
+  "name": "Microservice Template",
   "shortName": "microservice-template",
   "sourceName": "Microservice.Template",
   "preferNameDirectory": true,
@@ -22,6 +22,18 @@
       "datatype": "bool",
       "defaultValue": "false",
       "description": "Include .NET Aspire."
+    },
+    "httpPort": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "5001",
+      "description": "HTTP port"
+    },
+    "httpsPort": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "5000",
+      "description": "HTTPS port"
     }
   },
   "sources": [
@@ -38,7 +50,10 @@
         "defaultValue": "5000",
         "replaces": "{HTTPS_PORT}"
       },
-      "exclude": [ 
+      "include": [
+        "**/*"
+      ],
+      "exclude": [
         ".vs/**",
         ".vscode/**",
         ".git/**",
@@ -50,17 +65,17 @@
         {
           "condition": "(!aspire)",
           "exclude": [
-            "src/MicroserviceTemplate.AspireHost/**",
-            "src/MicroserviceTemplate.ServiceDefaults/**",
-            "tests/MicroserviceTemplate.AspireTests/**"
+            "src/Microservice.Template.AspireHost/**",
+            "src/Microservice.Template.ServiceDefaults/**",
+            "tests/Microservice.Template.Aspire.Tests/**"
           ]
         },
         {
           "condition": "(aspire)",
           "include": [
-            "src/MicroserviceTemplate.AspireHost/**",
-            "src/MicroserviceTemplate.ServiceDefaults/**",
-            "tests/MicroserviceTemplate.AspireTests/**"
+            "src/Microservice.Template.AspireHost/**",
+            "src/Microservice.Template.ServiceDefaults/**",
+            "tests/Microservice.Template.Aspire.Tests/**"
           ]
         }
       ]
