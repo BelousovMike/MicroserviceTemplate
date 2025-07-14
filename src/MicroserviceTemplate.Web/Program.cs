@@ -43,7 +43,7 @@ await app.UseAppMiddlewareAndSeedDatabase();
 
 await app.RunAsync();
 
-// Делает класс Program.cs публичным, чтобы интеграционные тесты ссылались на правильную сборку при собрке хоста.
+// Делает класс Program.cs публичным, чтобы интеграционные тесты ссылались на правильную сборку при сборке хоста.
 namespace MicroserviceTemplate.Web
 {
   public partial class Program { }
