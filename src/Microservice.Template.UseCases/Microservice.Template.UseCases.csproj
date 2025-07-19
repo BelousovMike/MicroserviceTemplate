@@ -10,10 +10,16 @@
       <PackageReference Include="Ardalis.Result" />
       <PackageReference Include="FastEndpoints" />
       <PackageReference Include="MediatR" />
+      <PackageReference Include="StyleCop.Analyzers" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Microservice.Template.Core\Microservice.Template.Core.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="..\..\stylecop.json" />
+    </ItemGroup>
+
 
 </Project>

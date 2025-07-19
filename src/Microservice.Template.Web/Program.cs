@@ -1,50 +1,37 @@
 ﻿using Microservice.Template.ServiceDefaults;
 using Microservice.Template.UseCases;
 using Microservice.Template.Web.Configurations;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-var logger = Log.Logger = new LoggerConfiguration()
+Serilog.ILogger logger = Log.Logger = new LoggerConfiguration()
   .Enrich.FromLogContext()
-  .WriteTo.Console()
+  .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
   .CreateLogger();
 
 logger.Information("Starting web host");
 
 builder.AddLoggerConfigs();
 
-var appLogger = new SerilogLoggerFactory(logger)
-  .CreateLogger<Microservice.Template.Web.Program>();
+using var loggerFactory = new SerilogLoggerFactory(logger);
+ILogger appLogger = loggerFactory.CreateLogger("Microservice.Template.Web.Program");
 
 builder.Services.AddOptionConfigs(builder.Configuration, appLogger, builder);
 builder.Services.AddServiceConfigs(appLogger, builder);
 
-
 builder.Services.AddFastEndpoints()
-  .SwaggerDocument(o =>
-  {
-    o.ShortSchemaNames = true;
-  })
-  .AddCommandMiddleware(c =>
-  {
-    c.Register(typeof(QueryLogger<,>));
-  });
+  .SwaggerDocument(o => o.ShortSchemaNames = true)
+  .AddCommandMiddleware(c => c.Register(typeof(QueryLogger<,>)));
 
 // Подключить команды.
 // builder.Services.AddTransient<ICommandHandler<AnyCommand,Result<int>>, AnyCommandHandler>();
-
-#if (aspire)
+#if aspire
 builder.AddServiceDefaults();
 #endif
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
-await app.UseAppMiddlewareAndSeedDatabase();
+await app.UseAppMiddlewareAndSeedDatabase().ConfigureAwait(false);
 
-await app.RunAsync();
-
-// Делает класс Program.cs публичным, чтобы интеграционные тесты ссылались на правильную сборку при сборке хоста.
-namespace Microservice.Template.Web
-{
-  public partial class Program { }
-}
+await app.RunAsync().ConfigureAwait(false);

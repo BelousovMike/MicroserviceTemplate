@@ -1,41 +1,52 @@
-﻿using Ardalis.ListStartupServices;
+﻿namespace Microservice.Template.Web.Configurations;
 
-namespace Microservice.Template.Web.Configurations
+/// <summary>
+/// Настройка опций.
+/// </summary>
+internal static class OptionConfigs
 {
-  public static class OptionConfigs
-  {
-    public static IServiceCollection AddOptionConfigs(this IServiceCollection services,
-      IConfiguration configuration,
-      Microsoft.Extensions.Logging.ILogger logger,
-      WebApplicationBuilder builder)
+    /// <summary>
+    /// Добавляет конфигурационные опции в DI-контейнер.
+    /// </summary>
+    /// <param name="services">Коллекция сервисов для регистрации опций.</param>
+    /// <param name="configuration">Конфигурация приложения для чтения настроек.</param>
+    /// <param name="logger">Логгер для записи информации о процессе конфигурации.</param>
+    /// <param name="builder">Построитель веб-приложения для доступа к дополнительным сервисам.</param>
+    /// <returns>
+    /// <see cref="IServiceCollection"/> с зарегистрированными конфигурационными опциями.
+    /// </returns>
+    public static IServiceCollection AddOptionConfigs(
+        this IServiceCollection services,
+        IConfiguration configuration,
+        Microsoft.Extensions.Logging.ILogger logger,
+        WebApplicationBuilder builder)
     {
-      // конфигурация сервисов.
-      // services.AddScoped<IAnyService, AnyService>();
+        // конфигурация сервисов.
+        // services.AddScoped<IAnyService, AnyService>();
 
-      // Настройка Web Behavior.
-      services.Configure<CookiePolicyOptions>(options =>
-      {
-        options.CheckConsentNeeded = context => true;
-        options.MinimumSameSitePolicy = SameSiteMode.None;
-      });
-
-      if (builder.Environment.IsDevelopment())
-      {
-        // Добавить список сервисов для диагностики.
-        // - see https://github.com/ardalis/AspNetCoreStartupServices
-        services.Configure<ServiceConfig>(config =>
+        // Настройка Web Behavior.
+        services.Configure<CookiePolicyOptions>(options =>
         {
-          config.Services = new List<ServiceDescriptor>(builder.Services);
-
-          // optional - стандартный путь для просмотра сервисов /listallservices
-          // - рекомендуется указывать собственный путь.
-          config.Path = "/listservices";
+            options.CheckConsentNeeded = _ => true;
+            options.MinimumSameSitePolicy = SameSiteMode.None;
         });
-      }
 
-      logger.LogInformation("{Project} were configured", "Options");
+        if (builder.Environment.IsDevelopment())
+        {
+            // Добавить список сервисов для диагностики.
+            // - see https://github.com/ardalis/AspNetCoreStartupServices
+            services.Configure<ServiceConfig>(config =>
+            {
+                config.Services = new List<ServiceDescriptor>(builder.Services);
 
-      return services;
+                // optional - стандартный путь для просмотра сервисов /listallservices
+                // - рекомендуется указывать собственный путь.
+                config.Path = "/listservices";
+            });
+        }
+
+        logger.LogInformation("{Project} сконфигурирован.", "Options");
+
+        return services;
     }
-  }
 }

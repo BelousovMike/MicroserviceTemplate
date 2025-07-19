@@ -1,6 +1,12 @@
 ﻿namespace Microservice.Template.Web.WeatherForecasts;
 
-public class WeatherForecastListResponse
+/// <summary>
+/// DTO для передачи списка прогнозов погоды в HTTP ответе.
+/// </summary>
+internal sealed class WeatherForecastListResponse
 {
-  public List<WeatherForecastRecord> Weathers { get; set; } = [];
+    /// <summary>
+    /// Список прогнозов погоды.
+    /// </summary>
+    public List<WeatherForecastRecord> Weathers { get; set; } = [];
 }

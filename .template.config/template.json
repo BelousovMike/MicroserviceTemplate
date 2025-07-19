@@ -27,29 +27,32 @@
       "type": "parameter",
       "datatype": "text",
       "defaultValue": "5001",
-      "description": "HTTP port"
+      "description": "HTTP port",
+      "replaces": "5001"
     },
     "httpsPort": {
       "type": "parameter",
       "datatype": "text",
       "defaultValue": "5000",
-      "description": "HTTPS port"
+      "description": "HTTPS port",
+      "replaces": "5000"
     }
   },
+  "postActions": [
+    {
+      "actionId": "E2E7E1C0-1B1B-4B2B-9C3E-1A1A1A1A1A1A",
+      "description": "Run dotnet restore",
+      "args": {},
+      "continueOnError": true,
+      "manualInstructions": [
+        {
+          "text": "dotnet restore"
+        }
+      ]
+    }
+  ],
   "sources": [
     {
-      "httpPort": {
-        "type": "parameter",
-        "description": "http port",
-        "defaultValue": "5001",
-        "replaces": "{HTTP_PORT}"
-      },
-      "httpsPort": {
-        "type": "parameter",
-        "description": "https port",
-        "defaultValue": "5000",
-        "replaces": "{HTTPS_PORT}"
-      },
       "include": [
         "**/*"
       ],

@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" />
+    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="all" />
   </ItemGroup>
   
   <ItemGroup>
@@ -23,5 +25,10 @@
                       IsAspireProjectResource="false"/>
     <ProjectReference Include="..\Microservice.Template.Web\Microservice.Template.Web.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
 
 </Project>

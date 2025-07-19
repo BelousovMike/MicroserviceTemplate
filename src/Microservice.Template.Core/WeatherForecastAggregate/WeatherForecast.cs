@@ -1,12 +1,27 @@
 ﻿namespace Microservice.Template.Core.WeatherForecastAggregate;
 
+/// <summary>
+/// Прогноз погоды.
+/// </summary>
 public class WeatherForecast
 {
-  public DateOnly Date { get; set; }
+    /// <summary>
+    /// Дата.
+    /// </summary>
+    public DateOnly Date { get; set; }
 
-  public int TemperatureC { get; set; }
+    /// <summary>
+    /// Температура по Цельсию.
+    /// </summary>
+    public int TemperatureC { get; set; }
 
-  public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    /// <summary>
+    /// Температура по Фаренгейту.
+    /// </summary>
+    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
-  public Summary? Summary { get; set; }
+    /// <summary>
+    ///  Cводные данные о погоде.
+    /// </summary>
+    public Summary? Summary { get; set; }
 }

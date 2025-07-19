@@ -1,14 +1,26 @@
-﻿using Ardalis.Result;
-using Ardalis.SharedKernel;
+﻿using Ardalis.SharedKernel;
 
 namespace Microservice.Template.UseCases.WeatherForecast.List;
 
-public class ListWeatherForecastHandler(IListWeatherForecastQueryService _service)
-  : IQueryHandler<ListWeatherForecastQuery, Result<IEnumerable<WeatherForecastDTO>>>
+/// <summary>
+/// Обработчик получения списка <see cref="WeatherForecast"/>.
+/// </summary>
+/// <param name="service">Сервис получения списка <see cref="WeatherForecast"/>.</param>
+public class ListWeatherForecastHandler(IListWeatherForecastQueryService service)
+    : IQueryHandler<ListWeatherForecastQuery, Result<IEnumerable<WeatherForecastDto>>>
 {
-  public async Task<Result<IEnumerable<WeatherForecastDTO>>> Handle(ListWeatherForecastQuery request, CancellationToken cancellationToken)
-  {
-    var result = await _service.ListAsync();
-    return Result.Success(result);
-  }
+    /// <summary>
+    /// Обработка комманды.
+    /// </summary>
+    /// <param name="request">Запрос.</param>
+    /// <param name="cancellationToken">Токен отмены.</param>
+    /// <returns>Коллекция <see cref="WeatherForecastDto"/>.</returns>
+    public async Task<Result<IEnumerable<WeatherForecastDto>>> Handle(
+        ListWeatherForecastQuery request,
+        CancellationToken cancellationToken)
+    {
+        IEnumerable<WeatherForecastDto> result = await service.ListAsync()
+            .ConfigureAwait(false);
+        return Result.Success(result);
+    }
 }

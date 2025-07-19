@@ -1,0 +1,60 @@
+{
+    "settings": {
+        "documentationRules": {
+            "companyName": "Your Company",
+            "documentExposedElements": true,
+            "documentInternalElements": false,
+            "documentPrivateElements": false,
+            "documentInterfaces": true,
+            "documentPrivateFields": false,
+            "documentPrivateMethods": false,
+            "documentPrivateProperties": false,
+            "documentPrivateEvents": false,
+            "documentPrivateAccessors": false,
+            "fileNamingConvention": "stylecop",
+            "xmlHeader": true
+        },
+        "orderingRules": {
+            "elementOrder": [
+                "kind",
+                "accessibility",
+                "constant",
+                "static",
+                "readonly"
+            ],
+            "usingDirectivesPlacement": "outsideNamespace",
+            "systemUsingDirectivesFirst": true
+        },
+        "indentation": {
+            "useTabs": false,
+            "indentationSize": 4
+        },
+        "layoutRules": {
+            "newlineAtEndOfFile": "require"
+        },
+        "namingRules": {
+            "allowCommonHungarianPrefixes": false,
+            "includeInferredTupleElementNames": true,
+            "tupleElementNameCasing": "pascalCase",
+            "allowedNamespaceComponents": [
+                "PascalCase"
+            ],
+            "allowedFieldNames": [
+                "_camelCase"
+            ],
+            "allowedPropertyNames": [
+                "PascalCase"
+            ],
+            "allowedMethodNames": [
+                "PascalCase"
+            ],
+            "allowedParameterNames": [
+                "camelCase"
+            ],
+            "allowedTypeNames": [
+                "PascalCase"
+            ]
+        },
+        "fileScopedNamespace": true
+    }
+}

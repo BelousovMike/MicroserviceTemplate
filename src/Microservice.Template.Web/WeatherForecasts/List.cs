@@ -3,26 +3,48 @@ using Microservice.Template.UseCases.WeatherForecast.List;
 
 namespace Microservice.Template.Web.WeatherForecasts;
 
-public class List(ISender _sender) : EndpointWithoutRequest<WeatherForecastListResponse>
+/// <summary>
+/// GET эндпоинт для получения списка прогнозов погоды.
+/// </summary>
+/// <param name="sender">MediatR sender для обработки <see cref="ListWeatherForecastQuery"/>.</param>
+[System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Performance",
+    "CA1812:Avoid uninstantiated internal classes",
+    Justification = "FastEndpoints создает экземпляры объектов автоматически.")]
+internal sealed class List(ISender sender) : EndpointWithoutRequest<WeatherForecastListResponse>
 {
-  public override void Configure()
-  {
-    Get("/weatherforecast");
-    AllowAnonymous();
-  }
-
-  public override async Task HandleAsync(CancellationToken cancellationToken)
-  {
-    Result<IEnumerable<WeatherForecastDTO>> result =
-      await _sender.Send(new ListWeatherForecastQuery(null, null), cancellationToken);
-
-    if (result.IsSuccess)
+    /// <summary>
+    /// Конфигурирование.
+    /// </summary>
+    public override void Configure()
     {
-      Response = new WeatherForecastListResponse()
-      {
-        Weathers = result.Value.Select(c => new WeatherForecastRecord(c.Date, c.TemperatureC, c.Summary, c.TemperatureF))
-          .ToList()
-      };
+        Get("/weatherforecast");
+        AllowAnonymous();
     }
-  }
+
+    /// <summary>
+    /// Выполняет обработку HTTP GET запроса для получения списка прогнозов.
+    /// </summary>
+    /// <param name="cancellationToken">Токен для отмены асинхронной операции.</param>
+    /// <returns>
+    /// <see cref="Task"/>, представляющий асинхронную операцию обработки запроса.
+    /// </returns>
+    public override async Task HandleAsync(CancellationToken cancellationToken)
+    {
+        Result<IEnumerable<WeatherForecastDto>> result =
+            await sender.Send(new ListWeatherForecastQuery(null, null), cancellationToken).ConfigureAwait(false);
+
+        if (result.IsSuccess)
+        {
+            Response = new WeatherForecastListResponse()
+            {
+                Weathers = result.Value.Select(c => new WeatherForecastRecord(
+                        c.Date,
+                        c.TemperatureC,
+                        c.Summary,
+                        c.TemperatureF))
+                    .ToList(),
+            };
+        }
+    }
 }

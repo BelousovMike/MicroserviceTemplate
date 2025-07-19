@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microservice.Template.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:Microservice.Template.Infrastructure.Data.AppDbContext">
+            <summary>
+            Контекст базы данных приложения.
+            </summary>
+            <param name="options">Опции конфигурации контекста.</param>
+        </member>
+        <member name="M:Microservice.Template.Infrastructure.Data.AppDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Microservice.Template.Infrastructure.Data.AppDbContext})">
+            <summary>
+            Контекст базы данных приложения.
+            </summary>
+            <param name="options">Опции конфигурации контекста.</param>
+        </member>
+        <member name="M:Microservice.Template.Infrastructure.Data.AppDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Настройка модели данных.
+            </summary>
+            <param name="modelBuilder">Построитель модели.</param>
+        </member>
+        <member name="T:Microservice.Template.Infrastructure.Data.AppDbContextExtensions">
+            <summary>
+            Расширения для конфигурации контекста базы данных.
+            </summary>
+        </member>
+        <member name="M:Microservice.Template.Infrastructure.Data.AppDbContextExtensions.AddApplicationDbContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            Добавляет контекст базы данных в DI-контейнер.
+            </summary>
+            <param name="services">Коллекция сервисов.</param>
+            <param name="connectionString">Строка подключения к базе данных.</param>
+        </member>
+        <member name="T:Microservice.Template.Infrastructure.Data.EfRepository`1">
+            <summary>
+            Пример репозитория.
+            </summary>
+            <param name="dbContext">Контекст БД.</param>
+            <typeparam name="T">Тип сущности.</typeparam>
+        </member>
+        <member name="M:Microservice.Template.Infrastructure.Data.EfRepository`1.#ctor(Microservice.Template.Infrastructure.Data.AppDbContext)">
+            <summary>
+            Пример репозитория.
+            </summary>
+            <param name="dbContext">Контекст БД.</param>
+            <typeparam name="T">Тип сущности.</typeparam>
+        </member>
+        <member name="T:Microservice.Template.Infrastructure.Data.Queries.ListWeatherForecastQueryService">
+            <summary>
+            Сервис получения данных о погоде.
+            </summary>
+            <param name="db">Контекст БД.</param>
+        </member>
+        <member name="M:Microservice.Template.Infrastructure.Data.Queries.ListWeatherForecastQueryService.#ctor(Microservice.Template.Infrastructure.Data.AppDbContext)">
+            <summary>
+            Сервис получения данных о погоде.
+            </summary>
+            <param name="db">Контекст БД.</param>
+        </member>
+        <member name="M:Microservice.Template.Infrastructure.Data.Queries.ListWeatherForecastQueryService.ListAsync">
+            <summary>
+            Метод получения информации о погоде.
+            </summary>
+            <returns>Возвращает коллекцию <see cref="T:Microservice.Template.UseCases.WeatherForecastDto"/> или пустую коллекцию.</returns>
+        </member>
+        <member name="T:Microservice.Template.Infrastructure.InfrastructureServiceExtensions">
+            <summary>
+            Расширение для добавления инфраструктурных сервисов.
+            </summary>
+        </member>
+        <member name="M:Microservice.Template.Infrastructure.InfrastructureServiceExtensions.AddInfrastructureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.ConfigurationManager,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Добавление инфраструктурных сервисов в DI.
+            </summary>
+            <param name="services">Коллекция сервисов.</param>
+            <param name="config">Конфигурация.</param>
+            <param name="logger">Логгер.</param>
+            <returns><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> с добавленными инфраструктурными сервисами.</returns>
+        </member>
+    </members>
+</doc>

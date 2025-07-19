@@ -2,30 +2,45 @@
 
 namespace Microservice.Template.Web.Configurations;
 
-public static class ServiceConfigs
+/// <summary>
+/// Конфигурация сервисов.
+/// </summary>
+internal static class ServiceConfigs
 {
-  public static IServiceCollection AddServiceConfigs(this IServiceCollection services, Microsoft.Extensions.Logging.ILogger logger, WebApplicationBuilder builder)
-  {
-    services.AddInfrastructureServices(builder.Configuration, logger)
+    /// <summary>
+    /// Добавляет конфигурацию сервисов в DI-контейнер.
+    /// </summary>
+    /// <param name="services">Коллекция сервисов для регистрации опций.</param>
+    /// <param name="logger">Логгер для записи информации о процессе конфигурации.</param>
+    /// <param name="builder">Построитель веб-приложения для доступа к дополнительным сервисам.</param>
+    /// <returns>
+    /// <see cref="IServiceCollection"/> с зарегистрированными конфигурационными опциями.
+    /// </returns>
+    public static IServiceCollection AddServiceConfigs(
+        this IServiceCollection services,
+        Microsoft.Extensions.Logging.ILogger logger,
+        WebApplicationBuilder builder)
+    {
+        services.AddInfrastructureServices(builder.Configuration, logger)
             .AddMediatrConfigs();
 
+        if (builder.Environment.IsDevelopment())
+        {
+            // === СЕРВИСЫ ТОЛЬКО ДЛЯ РАЗРАБОТКИ ===
+            // Моки и заглушки для тестирования
+            // services.AddScoped<IMockService, MockService>();
 
-    if (builder.Environment.IsDevelopment())
-    {
-      // Можно добавлять сервисы для локального тестирования
-      //services.AddScoped<IAnyService, AnyService>();
+            // Отладочные сервисы
+            // services.AddScoped<IDebugService, DebugService>();
+        }
+        else
+        {
+            // Сервисы, которые нужны в продакшене, но не в разработке
+            // Например: реальные внешние API, продакшен кэш, мониторинг
+            // services.AddScoped<IRealApiService, RealApiService>();
+        }
 
+        logger.LogInformation("{Project} сервисы зарегистрированы.", "Mediatr and AnyService");
+        return services;
     }
-    else
-    {
-      // Можно добавлять сервисы которые нужны не только для Development.
-      //services.AddScoped<IAnyService, AnyService>();
-    }
-
-    logger.LogInformation("{Project} services registered", "Mediatr and AnyService");
-
-    return services;
-  }
-
-
 }

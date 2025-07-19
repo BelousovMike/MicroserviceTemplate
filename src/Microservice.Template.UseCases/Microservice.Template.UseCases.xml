@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microservice.Template.UseCases</name>
+    </assembly>
+    <members>
+        <member name="T:Microservice.Template.UseCases.QueryLogger`2">
+            <summary>
+            Логгирование запросов.
+            </summary>
+            <param name="logger">Логгер.</param>
+            <typeparam name="TCommand">Тип команды.</typeparam>
+            <typeparam name="TResult">Тип результата.</typeparam>
+        </member>
+        <member name="M:Microservice.Template.UseCases.QueryLogger`2.#ctor(Microsoft.Extensions.Logging.ILogger{`0})">
+            <summary>
+            Логгирование запросов.
+            </summary>
+            <param name="logger">Логгер.</param>
+            <typeparam name="TCommand">Тип команды.</typeparam>
+            <typeparam name="TResult">Тип результата.</typeparam>
+        </member>
+        <member name="M:Microservice.Template.UseCases.QueryLogger`2.ExecuteAsync(`0,FastEndpoints.CommandDelegate{`1},System.Threading.CancellationToken)">
+            <summary>
+            Метод обработки.
+            </summary>
+            <param name="command">Команда.</param>
+            <param name="next">Следующее действие в конвейере.</param>
+            <param name="ct">Токен отмены.</param>
+            <returns>
+            <see cref="T:System.Threading.Tasks.Task`1"/> представляющий асинхронную операцию.
+            Результат содержит объект типа <typeparamref name="TResult"/>.
+            </returns>
+        </member>
+        <member name="T:Microservice.Template.UseCases.WeatherForecast.List.IListWeatherForecastQueryService">
+            <summary>
+            Представляет собой службу, которая фактически извлекает необходимые данные
+            Обычно реализуемую в инфраструктуре.
+            </summary>
+        </member>
+        <member name="M:Microservice.Template.UseCases.WeatherForecast.List.IListWeatherForecastQueryService.ListAsync">
+            <summary>
+            Метод получения информации о погоде.
+            </summary>
+            <returns>Возвращает коллекцию <see cref="T:Microservice.Template.UseCases.WeatherForecastDto"/> или пустую коллекцию.</returns>
+        </member>
+        <member name="T:Microservice.Template.UseCases.WeatherForecast.List.ListWeatherForecastHandler">
+            <summary>
+            Обработчик получения списка <see cref="N:Microservice.Template.UseCases.WeatherForecast"/>.
+            </summary>
+            <param name="service">Сервис получения списка <see cref="N:Microservice.Template.UseCases.WeatherForecast"/>.</param>
+        </member>
+        <member name="M:Microservice.Template.UseCases.WeatherForecast.List.ListWeatherForecastHandler.#ctor(Microservice.Template.UseCases.WeatherForecast.List.IListWeatherForecastQueryService)">
+            <summary>
+            Обработчик получения списка <see cref="N:Microservice.Template.UseCases.WeatherForecast"/>.
+            </summary>
+            <param name="service">Сервис получения списка <see cref="N:Microservice.Template.UseCases.WeatherForecast"/>.</param>
+        </member>
+        <member name="M:Microservice.Template.UseCases.WeatherForecast.List.ListWeatherForecastHandler.Handle(Microservice.Template.UseCases.WeatherForecast.List.ListWeatherForecastQuery,System.Threading.CancellationToken)">
+            <summary>
+            Обработка комманды.
+            </summary>
+            <param name="request">Запрос.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Коллекция <see cref="T:Microservice.Template.UseCases.WeatherForecastDto"/>.</returns>
+        </member>
+    </members>
+</doc>
