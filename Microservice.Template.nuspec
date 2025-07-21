@@ -5,6 +5,7 @@
     <version>1.0.0</version>
     <authors>BelousovMike</authors>
     <description>Шаблон микросервиса для .NET с поддержкой PostgreSQL, Docker, Clean Architecture и CI/CD.</description>
+    <repository type="git" url="https://github.com/BelousovMike/MicroserviceTemplate" />
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
