@@ -1,3 +1,0 @@
-  <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="all" />
-  </ItemGroup> 
