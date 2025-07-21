@@ -37,7 +37,6 @@ internal static class ServiceConfigs
         // Сервисы, которые нужны в продакшене, но не в разработке
         // Например: реальные внешние API, продакшен кэш, мониторинг
         // services.AddScoped<IRealApiService, RealApiService>();
-
         logger.LogInformation("{Project} сервисы зарегистрированы.", "Mediatr and AnyService");
         return services;
     }

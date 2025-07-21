@@ -102,7 +102,7 @@
             <summary>
             Выполняет обработку HTTP GET запроса для получения списка прогнозов.
             </summary>
-            <param name="cancellationToken">Токен для отмены асинхронной операции.</param>
+            <param name="ct">Токен для отмены асинхронной операции.</param>
             <returns>
             <see cref="T:System.Threading.Tasks.Task"/>, представляющий асинхронную операцию обработки запроса.
             </returns>

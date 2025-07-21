@@ -6,10 +6,17 @@
     <members>
         <member name="T:Microservice.Template.ServiceDefaults.BuilderExtensions">
             <summary>
-            Добавляет общие сервисы .NET Aspire: service discovery, устойчивость (resilience), health checks и OpenTelemetry.
-            Этот проект должен быть добавлен в качестве зависимости (reference) к каждому сервисному проекту в вашем решении.
+            Добавляет общие сервисы .NET Aspire: service discovery, Resilience, Health checks и OpenTelemetry.
+            Этот проект должен быть добавлен в качестве зависимости к каждому сервисному проекту в вашем решении.
             Подробнее о настройке Aspire: <see href="https://aka.ms/dotnet/aspire/service-defaults"/>.
             </summary>
+        </member>
+        <member name="M:Microservice.Template.ServiceDefaults.BuilderExtensions.MapDefaultEndpoints(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+            Маппинг стандартных эндпоинтов.
+            </summary>
+            <param name="app">Конфигуратор роутов.</param>
+            <returns>Конфигуратор с маппингом.</returns>
         </member>
         <member name="M:Microservice.Template.ServiceDefaults.BuilderExtensions.AddServiceDefaults``1(``0)">
             <summary>
@@ -42,13 +49,6 @@
             <param name="builder">builder.</param>
             <typeparam name="TBuilder">Тип builder.</typeparam>
             <returns>builder с подключенным Health Checks.</returns>
-        </member>
-        <member name="M:Microservice.Template.ServiceDefaults.BuilderExtensions.MapDefaultEndpoints(Microsoft.AspNetCore.Builder.WebApplication)">
-            <summary>
-            Маппинг стандартных эндпоинтов.
-            </summary>
-            <param name="app">Конфигуратор роутов.</param>
-            <returns>Конфигуратор с маппингом.</returns>
         </member>
     </members>
 </doc>
