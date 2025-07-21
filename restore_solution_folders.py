@@ -56,9 +56,7 @@ def main():
     for folder in SOLUTION_FOLDERS:
         guid = str(uuid.uuid4()).upper()
         folder_guids[folder] = guid
-        folder_projects.append(f'Project("{FOLDER_GUID}") = "{folder}", "{folder}", "{guid}"
-EndProject
-')
+        folder_projects.append(f'Project("{FOLDER_GUID}") = "{folder}", "{folder}", "{guid}"\nEndProject\n')
 
     # 3. Вставить solution folders после проектов
     sln_lines = sln_lines[:insert_idx] + folder_projects + sln_lines[insert_idx:]
