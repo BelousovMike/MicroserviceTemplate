@@ -32,11 +32,12 @@ jobs:
       - name: Install NuGet CLI
         run: |
           wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-          sudo mv nuget.exe /usr/local/bin/nuget
-          sudo chmod +x /usr/local/bin/nuget
+          sudo mv nuget.exe /usr/local/bin/nuget.exe
+          sudo chmod +x /usr/local/bin/nuget.exe
+          echo "nuget.exe location:" && ls -l /usr/local/bin/nuget.exe
 
       - name: Pack NuGet template
-        run: mono /usr/local/bin/nuget pack Microservice.Template.nuspec -OutputDirectory ./nupkg
+        run: mono /usr/local/bin/nuget.exe pack Microservice.Template.nuspec -OutputDirectory ./nupkg
 
       - name: Publish to NuGet.org
         run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
