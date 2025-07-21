@@ -1,5 +1,5 @@
 [![.NET 9](https://img.shields.io/badge/.NET-9.0-blueviolet)](https://dotnet.microsoft.com/)
-[![Build & Publish NuGet](https://github.com/BelousovMike/BM.MicroserviceTemplate.NET/actions/workflows/nuget-publish.yml/badge.svg)](https://github.com/BelousovMike/BM.MicroserviceTemplate.NET/actions/workflows/nuget-publish.yml)
+[![Build & Publish NuGet](https://github.com/BelousovMike/MicroserviceTemplate/actions/workflows/nuget-publish.yml/badge.svg)](https://github.com/BelousovMike/MicroserviceTemplate/actions/workflows/nuget-publish.yml)
 [![NuGet](https://img.shields.io/nuget/v/BM.MicroserviceTemplate.NET?label=NuGet)](https://www.nuget.org/packages/BM.MicroserviceTemplate.NET/)
 
 # BM.MicroserviceTemplate.NET
