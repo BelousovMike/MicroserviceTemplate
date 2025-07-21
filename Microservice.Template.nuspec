@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>MSTemplate</id>
+    <id>BM.MicroserviceTemplate.NET</id>
     <version>1.0.0</version>
     <authors>BelousovMike</authors>
     <description>Шаблон микросервиса для .NET с поддержкой PostgreSQL, Docker, Clean Architecture и CI/CD.</description>
