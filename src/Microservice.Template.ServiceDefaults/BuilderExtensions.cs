@@ -18,6 +18,34 @@ namespace Microservice.Template.ServiceDefaults;
 public static class BuilderExtensions
 {
     /// <summary>
+    /// Маппинг стандартных эндпоинтов.
+    /// </summary>
+    /// <param name="app">Конфигуратор роутов.</param>
+    /// <returns>Конфигуратор с маппингом.</returns>
+    public static WebApplication? MapDefaultEndpoints(this WebApplication? app)
+    {
+        ArgumentNullException.ThrowIfNull(app);
+        if (!app.Environment.IsDevelopment())
+        {
+            return app;
+        }
+
+        // Все проверки должны пройти до запуска приложения, чтобы оно считалось работоспособным.
+        app.MapHealthChecks("/health");
+
+        // Чтобы приложение считалось активным, должны пройти только проверки работоспособности,
+        // помеченные тегом "live"
+        app.MapHealthChecks(
+            "/alive",
+            new HealthCheckOptions
+            {
+                Predicate = r => r.Tags.Contains("live"),
+            });
+
+        return app;
+    }
+
+    /// <summary>
     /// Метод-расширение, который добавляет в DI-контейнер стандартные сервисы для микросервисного приложения на .NET Aspire.
     /// </summary>
     /// <param name="builder">builder.</param>
@@ -59,7 +87,8 @@ public static class BuilderExtensions
     public static TBuilder ConfigureOpenTelemetry<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
     {
-        builder.Logging.AddOpenTelemetry(logging =>
+        builder.Logging
+            .AddOpenTelemetry(logging =>
         {
             logging.IncludeFormattedMessage = true;
             logging.IncludeScopes = true;
@@ -95,7 +124,9 @@ public static class BuilderExtensions
 
         if (useOtlpExporter)
         {
-            builder.Services.AddOpenTelemetry().UseOtlpExporter();
+            builder.Services
+                .AddOpenTelemetry()
+                .UseOtlpExporter();
         }
 
         // Раскомментировать для включения Azure Monitor exporter
@@ -122,32 +153,5 @@ public static class BuilderExtensions
             .AddCheck("self", () => HealthCheckResult.Healthy(), ["live"]);
 
         return builder;
-    }
-
-    /// <summary>
-    /// Маппинг стандартных эндпоинтов.
-    /// </summary>
-    /// <param name="app">Конфигуратор роутов.</param>
-    /// <returns>Конфигуратор с маппингом.</returns>
-    private static WebApplication MapDefaultEndpoints(this WebApplication app)
-    {
-        if (!app.Environment.IsDevelopment())
-        {
-            return app;
-        }
-
-        // Все проверки должны пройти до запуска приложения, чтобы оно считалось работоспособным.
-        app.MapHealthChecks("/health");
-
-        // Чтобы приложение считалось активным, должны пройти только проверки работоспособности,
-        // помеченные тегом "live"
-        app.MapHealthChecks(
-            "/alive",
-            new HealthCheckOptions
-            {
-                Predicate = r => r.Tags.Contains("live"),
-            });
-
-        return app;
     }
 }

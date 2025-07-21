@@ -25,14 +25,15 @@ internal sealed class List(ISender sender) : EndpointWithoutRequest<WeatherForec
     /// <summary>
     /// Выполняет обработку HTTP GET запроса для получения списка прогнозов.
     /// </summary>
-    /// <param name="cancellationToken">Токен для отмены асинхронной операции.</param>
+    /// <param name="ct">Токен для отмены асинхронной операции.</param>
     /// <returns>
     /// <see cref="Task"/>, представляющий асинхронную операцию обработки запроса.
     /// </returns>
-    public override async Task HandleAsync(CancellationToken cancellationToken)
+    public override async Task HandleAsync(CancellationToken ct)
     {
         Result<IEnumerable<WeatherForecastDto>> result =
-            await sender.Send(new ListWeatherForecastQuery(null, null), cancellationToken).ConfigureAwait(false);
+            await sender.Send(new ListWeatherForecastQuery(null, null), ct)
+                .ConfigureAwait(false);
 
         if (result.IsSuccess)
         {

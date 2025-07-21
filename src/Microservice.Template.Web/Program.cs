@@ -26,12 +26,17 @@ builder.Services.AddFastEndpoints()
 
 // Подключить команды.
 // builder.Services.AddTransient<ICommandHandler<AnyCommand,Result<int>>, AnyCommandHandler>();
+
 #if aspire
 builder.AddServiceDefaults();
 #endif
 
 WebApplication app = builder.Build();
 
-await app.UseAppMiddlewareAndSeedDatabase().ConfigureAwait(false);
+app.MapDefaultEndpoints();
 
-await app.RunAsync().ConfigureAwait(false);
+await app.UseAppMiddlewareAndSeedDatabase()
+    .ConfigureAwait(false);
+
+await app.RunAsync()
+    .ConfigureAwait(false);

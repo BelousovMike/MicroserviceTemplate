@@ -54,7 +54,8 @@
   "sources": [
     {
       "include": [
-        "**/*"
+        "**/*",
+        "Docker/.env"
       ],
       "exclude": [
         ".vs/**",

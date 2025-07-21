@@ -1,26 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<?xml version="1.0"?>
+<package>
   <metadata>
-    <id>MicrosrviceTemplate.Template</id>
-    <title>ASP.NET Core Microservice Template</title>
+    <id>Microservice.Template</id>
     <version>1.0.0</version>
-    <authors>Belousov Mike</authors>
-    <description>
-      Шаблон для быстрого создания микросервисов. Содержит общую логику для микросервиса с возможностью расширения
-    </description>
-    <language>ru-Ru</language>
-    <license type="expression">MIT</license>
-    <projectUrl>https://github.com/BelousovMike/Microservice.Template</projectUrl>
-    <releaseNotes>
-    </releaseNotes>
+    <authors>BelousovMike</authors>
+    <description>Шаблон микросервиса для .NET с поддержкой PostgreSQL, Docker, Clean Architecture и CI/CD.</description>
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
-    <tags>Web ASP.NET microservice template</tags>
-    <readme>README.md</readme>
   </metadata>
   <files>
-    <file src=".\**" target="content" exclude="**\bin\**;**\obj\**;**\.git\**;**\.github\**;**\*.user;**\.vs\**;**\.vscode\**;**\.gitignore;**\sample\**" />
-    <file src="README.md" />
+    <file src="**/*" target="content" />
   </files>
 </package>
