@@ -4,7 +4,7 @@
 
 # BM.MicroserviceTemplate.NET
 
-<img src="https://raw.githubusercontent.com/BelousovMike/BM.MicroserviceTemplate.NET/main/.github/bm-logo.svg" alt="BM" width="120"/>
+<img src="https://raw.githubusercontent.com/BelousovMike/MicroserviceTemplate/main/.github/bm-logo.svg" alt="BM" width="120"/>
 
 **BM.MicroserviceTemplate.NET** — это стартовый шаблон для микросервисов на .NET 9 с PostgreSQL, Docker, гибкой и масштабируемой архитектурой, Aspire и CI/CD. Всё, что нужно для быстрого, поддерживаемого и удобного старта!
 
