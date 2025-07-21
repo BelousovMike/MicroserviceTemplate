@@ -2,8 +2,8 @@ name: NuGet Template Publish
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*"
 
 jobs:
   pack-and-publish:
@@ -17,30 +17,15 @@ jobs:
         with:
           dotnet-version: 9.0.x
 
-      - name: Get current version
+      - name: Get version from tag
         id: get_version
         run: |
-          VERSION=$(grep -oP '<version>\K[^<]+' Microservice.Template.nuspec)
-          echo "Current version: $VERSION"
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          TAG_VERSION=${GITHUB_REF#refs/tags/v}
+          echo "TAG_VERSION=$TAG_VERSION" >> $GITHUB_ENV
 
-      - name: Bump patch version
-        id: bump_version
+      - name: Update version in nuspec
         run: |
-          IFS='.' read -r major minor patch <<< "$VERSION"
-          patch=$((patch+1))
-          NEW_VERSION="$major.$minor.$patch"
-          echo "Bumped version: $NEW_VERSION"
-          sed -i "s/<version>.*<\/version>/<version>${NEW_VERSION}<\/version>/" Microservice.Template.nuspec
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-
-      - name: Commit version bump
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add Microservice.Template.nuspec
-          git commit -m "chore: bump version to $NEW_VERSION" || echo "No changes to commit"
-          git push || echo "No changes to push"
+          sed -i "s/<version>.*<\/version>/<version>${TAG_VERSION}<\/version>/" Microservice.Template.nuspec
 
       - name: Install Mono
         run: sudo apt-get update && sudo apt-get install -y mono-complete
@@ -56,6 +41,6 @@ jobs:
         run: mono /usr/local/bin/nuget.exe pack Microservice.Template.nuspec -OutputDirectory ./nupkg
 
       - name: Publish to NuGet.org
-        run: dotnet nuget push ./nupkg/BM.MicroserviceTemplate.NET.*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push ./nupkg/BM.MicroserviceTemplate.NET.*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
