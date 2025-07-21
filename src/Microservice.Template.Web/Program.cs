@@ -6,9 +6,9 @@ using ILogger = Microsoft.Extensions.Logging.ILogger;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 Serilog.ILogger logger = Log.Logger = new LoggerConfiguration()
-  .Enrich.FromLogContext()
-  .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
-  .CreateLogger();
+    .Enrich.FromLogContext()
+    .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
+    .CreateLogger();
 
 logger.Information("Starting web host");
 
@@ -21,8 +21,18 @@ builder.Services.AddOptionConfigs(builder.Configuration, appLogger, builder);
 builder.Services.AddServiceConfigs(appLogger, builder);
 
 builder.Services.AddFastEndpoints()
-  .SwaggerDocument(o => o.ShortSchemaNames = true)
-  .AddCommandMiddleware(c => c.Register(typeof(QueryLogger<,>)));
+    .SwaggerDocument(o =>
+    {
+        o.DocumentSettings = s =>
+        {
+            s.Title = "Microservice Template API";
+            s.Version = "v1";
+            s.Description =
+                "Документация для API микросервиса. Пример использования FastEndpoints и расширенного Swagger.";
+        };
+        o.ShortSchemaNames = true;
+    })
+    .AddCommandMiddleware(c => c.Register(typeof(QueryLogger<,>)));
 
 // Подключить команды.
 // builder.Services.AddTransient<ICommandHandler<AnyCommand,Result<int>>, AnyCommandHandler>();

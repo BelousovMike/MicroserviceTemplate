@@ -12,5 +12,5 @@ public static class AppDbContextExtensions
     /// <param name="connectionString">Строка подключения к базе данных.</param>
     public static void AddApplicationDbContext(this IServiceCollection services, string connectionString) =>
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(connectionString));
+            options.UseNpgsql(connectionString));
 }

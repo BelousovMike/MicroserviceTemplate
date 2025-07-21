@@ -21,10 +21,9 @@ public static class InfrastructureServiceExtensions
         ConfigurationManager config,
         ILogger logger)
     {
-        var connectionString = config.GetConnectionString("SqlConnection");
+        var connectionString = config.GetConnectionString("DefaultConnection");
         Guard.Against.Null(connectionString);
-        services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(connectionString));
+        services.AddApplicationDbContext(connectionString);
 
         // Интерфейсы и сервисы из Core тоже нужно подключать здесь.
         services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>))

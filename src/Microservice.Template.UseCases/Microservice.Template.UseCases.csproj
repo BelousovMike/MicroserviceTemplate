@@ -17,9 +17,4 @@
       <ProjectReference Include="..\Microservice.Template.Core\Microservice.Template.Core.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <AdditionalFiles Include="..\..\stylecop.json" />
-    </ItemGroup>
-
-
 </Project>
