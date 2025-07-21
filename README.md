@@ -4,9 +4,9 @@
 
 # BM.MicroserviceTemplate.NET
 
-<img src="https://raw.githubusercontent.com/BelousovMike/BM.MicroserviceTemplate.NET/main/.github/logo.png" alt="BM.MicroserviceTemplate.NET" width="200"/>
+<img src="https://raw.githubusercontent.com/BelousovMike/BM.MicroserviceTemplate.NET/main/.github/bm-logo.svg" alt="BM" width="120"/>
 
-**BM.MicroserviceTemplate.NET** — это стартовый шаблон для микросервисов на .NET 9 с PostgreSQL, Docker, современной архитектурой, Aspire и CI/CD. Всё, что нужно для современного, поддерживаемого и удобного старта!
+**BM.MicroserviceTemplate.NET** — это стартовый шаблон для микросервисов на .NET 9 с PostgreSQL, Docker, гибкой и масштабируемой архитектурой, Aspire и CI/CD. Всё, что нужно для быстрого, поддерживаемого и удобного старта!
 
 ---
 
@@ -90,7 +90,7 @@ ASPNETCORE_URLS=http://+:80;https://+:443
 ## 🛠️ Технологии и паттерны
 
 - **.NET 9.0** (C# 13)
-- **Современная архитектура** (DDD, CQRS, Clean Architecture, best practices .NET)
+- **Гибкая архитектура** (DDD, CQRS, Clean Architecture, best practices .NET)
 - **FastEndpoints** — быстрый REST API
 - **MediatR** — CQRS, обработка команд и запросов
 - **Serilog** — структурированное логгирование
