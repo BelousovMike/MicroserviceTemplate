@@ -21,7 +21,7 @@ public class WeatherForecast
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
     /// <summary>
-    ///  Cводные данные о погоде.
+    ///  Сводные данные о погоде.
     /// </summary>
     public Summary? Summary { get; set; }
 }
