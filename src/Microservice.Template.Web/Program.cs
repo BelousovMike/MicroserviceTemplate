@@ -26,7 +26,6 @@ builder.Services.AddFastEndpoints()
 
 // Подключить команды.
 // builder.Services.AddTransient<ICommandHandler<AnyCommand,Result<int>>, AnyCommandHandler>();
-
 #if aspire
 builder.AddServiceDefaults();
 #endif

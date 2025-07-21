@@ -3,6 +3,10 @@
 /// <summary>
 /// Cводные данные о погоде.
 /// </summary>
+[System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Style",
+    "SA1623",
+    Justification = "Демо код. Добавлено для примера.")]
 public class Summary : SmartEnum<Summary>
 {
     /// <summary>
