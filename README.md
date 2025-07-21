@@ -61,10 +61,24 @@ Docker/
    - `microservice-template` — short name шаблона
    - `-n MyService` — имя создаваемого решения/проекта
 
-4. **Откройте проект в Rider:**
+4. **(Опционально) Восстановите Solution Folders в .sln:**
+   Если после создания решения папки src и tests не отображаются как Solution Folders в Rider/Visual Studio, выполните:
+   
+   - **Для MacOS и Linux используйте python3:**
+     ```sh
+     python3 restore_solution_folders.py MyService.sln
+     ```
+   - **Для Windows используйте python:**
+     ```sh
+     python restore_solution_folders.py MyService.sln
+     ```
+   - Замените `MyService.sln` на имя вашего файла решения.
+   - Для работы нужен установленный Python (обычно есть по умолчанию).
+
+5. **Откройте проект в Rider:**
    - Через **File → Open...** выберите созданную папку, либо перетащите её в окно Rider.
 
-5. **(Опционально) Удалить шаблон:**
+6. **(Опционально) Удалить шаблон:**
    Если нужно удалить шаблон:
    ```sh
    dotnet new uninstall BM.MicroserviceTemplate.NET

@@ -49,6 +49,36 @@
           "text": "dotnet restore"
         }
       ]
+    },
+    {
+      "actionId": "C1E7E1C0-1B1B-4B2B-9C3E-1A1A1A1A1A1B",
+      "description": "Restore Solution Folders structure in .sln (Windows)",
+      "args": {
+        "executable": "python",
+        "args": "restore_solution_folders.py ${{solutionName}}.sln"
+      },
+      "condition": "(osPlatform == 'Windows')",
+      "continueOnError": true,
+      "manualInstructions": [
+        {
+          "text": "python restore_solution_folders.py <имя_решения>.sln"
+        }
+      ]
+    },
+    {
+      "actionId": "C1E7E1C0-1B1B-4B2B-9C3E-1A1A1A1A1A1C",
+      "description": "Restore Solution Folders structure in .sln (MacOS/Linux)",
+      "args": {
+        "executable": "python3",
+        "args": "restore_solution_folders.py ${{solutionName}}.sln"
+      },
+      "condition": "(osPlatform != 'Windows')",
+      "continueOnError": true,
+      "manualInstructions": [
+        {
+          "text": "python3 restore_solution_folders.py <имя_решения>.sln"
+        }
+      ]
     }
   ],
   "sources": [
