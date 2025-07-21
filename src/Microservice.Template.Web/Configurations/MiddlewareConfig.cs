@@ -32,7 +32,8 @@ internal static class MiddlewareConfig
 
         app.UseHttpsRedirection(); // Внимание: при этом удаляются заголовки авторизации!!!!
 
-        await SeedDatabase(app).ConfigureAwait(false);
+        await SeedDatabase(app)
+            .ConfigureAwait(false);
 
         return app;
     }

@@ -20,6 +20,14 @@ internal sealed class List(ISender sender) : EndpointWithoutRequest<WeatherForec
     {
         Get("/weatherforecast");
         AllowAnonymous();
+        Summary(s =>
+        {
+            s.Summary = "Получить прогноз погоды";
+            s.Description = "Возвращает список прогнозов на 5 дней.";
+            s.Responses[200] = "Список прогнозов погоды успешно получен.";
+            s.Responses[400] = "Некорректный запрос.";
+            s.Responses[500] = "Внутренняя ошибка сервера.";
+        });
     }
 
     /// <summary>
@@ -39,12 +47,14 @@ internal sealed class List(ISender sender) : EndpointWithoutRequest<WeatherForec
         {
             Response = new WeatherForecastListResponse()
             {
-                Weathers = result.Value.Select(c => new WeatherForecastRecord(
+                Weathers =
+                [
+                    .. result.Value.Select(c => new WeatherForecastRecord(
                         c.Date,
                         c.TemperatureC,
                         c.Summary,
                         c.TemperatureF))
-                    .ToList(),
+                ],
             };
         }
     }
