@@ -40,7 +40,7 @@ Docker/
 1. **Клонируйте репозиторий:**
    ```sh
    git clone https://github.com/BelousovMike/MicroserviceTemplate.git
-   cd BM.MicroserviceTemplate.NET
+   cd MicroserviceTemplate
    ```
 2. **Соберите решение:**  
    (Восстановление пакетов и прогон тестов выполняются автоматически)
