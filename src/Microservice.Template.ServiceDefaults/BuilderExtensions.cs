@@ -11,8 +11,8 @@ using OpenTelemetry.Trace;
 namespace Microservice.Template.ServiceDefaults;
 
 /// <summary>
-/// Добавляет общие сервисы .NET Aspire: service discovery, устойчивость (resilience), health checks и OpenTelemetry.
-/// Этот проект должен быть добавлен в качестве зависимости (reference) к каждому сервисному проекту в вашем решении.
+/// Добавляет общие сервисы .NET Aspire: service discovery, Resilience, Health checks и OpenTelemetry.
+/// Этот проект должен быть добавлен в качестве зависимости к каждому сервисному проекту в вашем решении.
 /// Подробнее о настройке Aspire: <see href="https://aka.ms/dotnet/aspire/service-defaults"/>.
 /// </summary>
 public static class BuilderExtensions
@@ -69,12 +69,6 @@ public static class BuilderExtensions
             http.AddServiceDiscovery();
         });
 
-        // Раскомментируйте следующий блок, чтобы ограничить разрешённые схемы для обнаружения сервисов.
-        // Если не нужно, то удалить.
-        // builder.Services.Configure<ServiceDiscoveryOptions>(options =>
-        // {
-        //     options.AllowedSchemes = ["https"];
-        // });
         return builder;
     }
 
@@ -84,7 +78,7 @@ public static class BuilderExtensions
     /// <param name="builder">builder.</param>
     /// <typeparam name="TBuilder">тип builder.</typeparam>
     /// <returns>builder с настроенным Open Telemetry.</returns>
-    public static TBuilder ConfigureOpenTelemetry<TBuilder>(this TBuilder builder)
+    private static TBuilder ConfigureOpenTelemetry<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
     {
         builder.Logging
@@ -99,10 +93,6 @@ public static class BuilderExtensions
                 .AddHttpClientInstrumentation()
                 .AddRuntimeInstrumentation())
             .WithTracing(tracing => tracing.AddAspNetCoreInstrumentation()
-
-                // Раскомментируйте следующую строку для включения инструментирования gRPC (требуется пакет OpenTelemetry.Instrumentation.GrpcNetClient)
-                // Если не нужно, то удалить.
-                // .AddGrpcClientInstrumentation()
                 .AddHttpClientInstrumentation());
 
         builder.AddOpenTelemetryExporters();
@@ -129,14 +119,6 @@ public static class BuilderExtensions
                 .UseOtlpExporter();
         }
 
-        // Раскомментировать для включения Azure Monitor exporter
-        // (требуется пакет Azure.Monitor.OpenTelemetry.AspNetCore)
-        // Если не нужно, то удалить.
-        // if (!string.IsNullOrEmpty(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
-        // {
-        //    builder.Services.AddOpenTelemetry()
-        //       .UseAzureMonitor();
-        // }
         return builder;
     }
 
