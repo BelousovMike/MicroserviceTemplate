@@ -274,3 +274,5 @@ tests/.DS_Store
 # Rider/IDE user settings
 *.DotSettings.user
 extensions.json
+
+*.xml
