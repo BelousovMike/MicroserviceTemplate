@@ -14,12 +14,10 @@ public static class InfrastructureServiceExtensions
     /// </summary>
     /// <param name="services">Коллекция сервисов.</param>
     /// <param name="config">Конфигурация.</param>
-    /// <param name="logger">Логгер.</param>
     /// <returns><see cref="IServiceCollection"/> с добавленными инфраструктурными сервисами.</returns>
     public static IServiceCollection AddInfrastructureServices(
         this IServiceCollection services,
-        ConfigurationManager config,
-        ILogger logger)
+        ConfigurationManager config)
     {
         var connectionString = config.GetConnectionString("DefaultConnection");
         Guard.Against.Null(connectionString);
@@ -29,8 +27,6 @@ public static class InfrastructureServiceExtensions
         services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
             .AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>))
             .AddScoped<IListWeatherForecastQueryService, ListWeatherForecastQueryService>();
-
-        logger.LogInformation("{Project} сервисы зарегистрированы.", "Infrastructure");
 
         return services;
     }
