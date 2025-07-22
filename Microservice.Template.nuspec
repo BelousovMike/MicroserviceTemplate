@@ -10,6 +10,7 @@
         <packageTypes>
             <packageType name="Template"/>
         </packageTypes>
+        <readme>README.md</readme>
     </metadata>
     <files>
         <file src="**/*" target="content"/>
