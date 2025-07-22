@@ -8,7 +8,8 @@ FOLDER_GUID = "{2150E333-8FDC-42A3-9474-1A3956D46DE8}"
 SOLUTION_ITEMS = [
     ".editorconfig",
     "Directory.Build.props",
-    "Directory.Packages.props"
+    "Directory.Packages.props",
+    "stylecop.json"
 ]
 IGNORE_FOLDERS = {"bin", "obj", "Properties", ".vs", ".git", "node_modules"}
 
