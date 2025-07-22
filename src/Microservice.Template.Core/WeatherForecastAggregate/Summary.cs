@@ -1,7 +1,7 @@
 ﻿namespace Microservice.Template.Core.WeatherForecastAggregate;
 
 /// <summary>
-/// Cводные данные о погоде.
+/// Сводные данные о погоде.
 /// </summary>
 [System.Diagnostics.CodeAnalysis.SuppressMessage(
     "Style",

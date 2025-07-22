@@ -18,7 +18,7 @@ internal static class ServiceConfigs
     public static IServiceCollection AddServiceConfigs(
         this IServiceCollection services,
         WebApplicationBuilder builder)
-    {
+        {
         services.AddInfrastructureServices(builder.Configuration)
             .AddMediatrConfigs();
 

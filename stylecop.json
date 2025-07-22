@@ -55,6 +55,11 @@
                 "PascalCase"
             ]
         },
-        "fileScopedNamespace": true
+        "fileScopedNamespace": true,
+        "rules": {
+            "SA1623": false,
+            "SA1101": false,
+            "SA1633": false
+        }
     }
 }
