@@ -61,6 +61,12 @@ Docker/
    - `microservice-template` — short name шаблона
    - `-n MyService` — имя создаваемого решения/проекта
 
+
+> ⚠️ **Для пользователей JetBrains Rider:**
+> При создании проекта из шаблона обязательно включайте опцию
+> **"Put solution and project in the same directory"** ("Разместить решение и проект в одной папке"),
+> чтобы все файлы (README.md, .editorconfig, stylecop.json и др.) оказались в корне решения.
+
 4. **(Опционально) Восстановите Solution Folders в .sln:**
    Если после создания решения папки src и tests не отображаются как Solution Folders в Rider/Visual Studio, выполните:
    
