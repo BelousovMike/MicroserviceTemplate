@@ -18,7 +18,7 @@ public static class InfrastructureServiceExtensions
     public static IServiceCollection AddInfrastructureServices(
         this IServiceCollection services,
         ConfigurationManager config)
-    {
+        {
         var connectionString = config.GetConnectionString("DefaultConnection");
         Guard.Against.Null(connectionString);
         services.AddApplicationDbContext(connectionString);

@@ -1,17 +1,18 @@
 <?xml version="1.0"?>
 <package>
-  <metadata>
-    <id>BM.MicroserviceTemplate.NET</id>
-    <version>1.0.0</version>
-    <authors>BelousovMike</authors>
-    <description>Шаблон микросервиса для .NET с поддержкой PostgreSQL, Docker, Clean Architecture и CI/CD.</description>
-    <repository type="git" url="https://github.com/BelousovMike/MicroserviceTemplate" />
-    <readme>README.md</readme>
-    <packageTypes>
-      <packageType name="Template" />
-    </packageTypes>
-  </metadata>
-  <files>
-    <file src="**/*" target="content" />
-  </files>
+    <metadata>
+        <id>BM.MicroserviceTemplate.NET</id>
+        <version>1.0.0</version>
+        <authors>BelousovMike</authors>
+        <description>Шаблон микросервиса для .NET с поддержкой PostgreSQL, Docker, Clean Architecture и CI/CD.
+        </description>
+        <repository type="git" url="https://github.com/BelousovMike/MicroserviceTemplate"/>
+        <packageTypes>
+            <packageType name="Template"/>
+        </packageTypes>
+        <readme>README.md</readme>
+    </metadata>
+    <files>
+        <file src="**/*" target="content"/>
+    </files>
 </package>

@@ -8,7 +8,7 @@ namespace Microservice.Template.UseCases.WeatherForecast.List;
 /// <param name="service">Сервис получения списка <see cref="WeatherForecast"/>.</param>
 public class ListWeatherForecastHandler(IListWeatherForecastQueryService service)
     : IQueryHandler<ListWeatherForecastQuery, Result<IEnumerable<WeatherForecastDto>>>
-{
+    {
     /// <summary>
     /// Обработка комманды.
     /// </summary>
@@ -18,7 +18,7 @@ public class ListWeatherForecastHandler(IListWeatherForecastQueryService service
     public async Task<Result<IEnumerable<WeatherForecastDto>>> Handle(
         ListWeatherForecastQuery request,
         CancellationToken cancellationToken)
-    {
+        {
         IEnumerable<WeatherForecastDto> result = await service.ListAsync()
             .ConfigureAwait(false);
         return Result.Success(result);
