@@ -72,6 +72,9 @@
         "**/*",
         ".editorconfig",
         "stylecop.json",
+        ".gitignore",
+        "nuget.config",
+        "global.json",
         "Docker/.env"
       ],
       "exclude": [
@@ -79,7 +82,7 @@
         ".vscode/**",
         ".git/**",
         ".github/**",
-        ".template.config",
+        ".template.config/**",
         "sample/**"
       ],
       "modifiers": [
