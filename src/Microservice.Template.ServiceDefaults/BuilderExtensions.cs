@@ -53,7 +53,7 @@ public static class BuilderExtensions
     /// <returns>Возвращает builder со стандартными сервисами.</returns>
     public static TBuilder AddServiceDefaults<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
-    {
+        {
         builder.ConfigureOpenTelemetry();
 
         builder.AddDefaultHealthChecks();
@@ -80,7 +80,7 @@ public static class BuilderExtensions
     /// <returns>builder с настроенным Open Telemetry.</returns>
     private static TBuilder ConfigureOpenTelemetry<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
-    {
+        {
         builder.Logging
             .AddOpenTelemetry(logging =>
             {
@@ -108,7 +108,7 @@ public static class BuilderExtensions
     /// <returns>builder с конфигурацией.</returns>
     private static TBuilder AddOpenTelemetryExporters<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
-    {
+        {
         var useOtlpExporter = !string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]) ||
                               !string.IsNullOrWhiteSpace(builder.Configuration["DOTNET_DASHBOARD_OTLP_ENDPOINT_URL"]);
 
@@ -130,7 +130,7 @@ public static class BuilderExtensions
     /// <returns>builder с подключенным Health Checks.</returns>
     private static TBuilder AddDefaultHealthChecks<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
-    {
+        {
         builder.Services.AddHealthChecks()
             .AddCheck("self", () => HealthCheckResult.Healthy(), ["live"]);
 
