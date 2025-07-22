@@ -50,9 +50,14 @@ def clean_duplicate_endglobalsection(sln_lines: List[str]) -> List[str]:
     return cleaned
 
 
-def collect_solution_items(solution_dir: Path) -> List[str]:
-    """Собирает файлы, которые должны быть добавлены в SolutionItems."""
-    return [f for f in SOLUTION_ITEMS if (solution_dir / f).is_file()]
+def collect_solution_items(solution_dir: Path):
+    # Ищет файлы из SOLUTION_ITEMS в корне решения без учёта регистра
+    found = []
+    for item in SOLUTION_ITEMS:
+        for f in solution_dir.iterdir():
+            if f.name.lower() == item.lower() and f.is_file():
+                found.append(f.name)
+    return found
 
 
 def get_projects_in_folder(root: Path, folder_name: str) -> List[str]:
@@ -187,4 +192,4 @@ def main():
     update_sln_with_folders_and_items(sln_path)
 
 if __name__ == "__main__":
-    main() 
+    main()
