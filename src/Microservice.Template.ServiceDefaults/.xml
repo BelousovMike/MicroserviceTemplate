@@ -6,21 +6,23 @@
     <members>
         <member name="T:Microservice.Template.ServiceDefaults.BuilderExtensions">
             <summary>
-            Добавляет общие сервисы .NET Aspire: service discovery, Resilience, Health checks и OpenTelemetry.
-            Этот проект должен быть добавлен в качестве зависимости к каждому сервисному проекту в вашем решении.
-            Подробнее о настройке Aspire: <see href="https://aka.ms/dotnet/aspire/service-defaults"/>.
+                Добавляет общие сервисы .NET Aspire: service discovery, Resilience, Health checks и OpenTelemetry.
+                Этот проект должен быть добавлен в качестве зависимости к каждому сервисному проекту в вашем решении.
+                Подробнее о настройке Aspire:<see href="https://aka.ms/dotnet/aspire/service-defaults"/>.
             </summary>
         </member>
-        <member name="M:Microservice.Template.ServiceDefaults.BuilderExtensions.MapDefaultEndpoints(Microsoft.AspNetCore.Builder.WebApplication)">
+        <member
+            name="M:Microservice.Template.ServiceDefaults.BuilderExtensions.MapDefaultEndpoints(Microsoft.AspNetCore.Builder.WebApplication)">
             <summary>
-            Маппинг стандартных эндпоинтов.
+                Маппинг стандартных эндпоинтов.
             </summary>
             <param name="app">Конфигуратор роутов.</param>
             <returns>Конфигуратор с маппингом.</returns>
         </member>
         <member name="M:Microservice.Template.ServiceDefaults.BuilderExtensions.AddServiceDefaults``1(``0)">
             <summary>
-            Метод-расширение, который добавляет в DI-контейнер стандартные сервисы для микросервисного приложения на .NET Aspire.
+                Метод-расширение, который добавляет в DI-контейнер стандартные сервисы для микросервисного приложения на
+                .NET Aspire.
             </summary>
             <param name="builder">builder.</param>
             <typeparam name="TBuilder">Тип builder.</typeparam>
@@ -28,7 +30,7 @@
         </member>
         <member name="M:Microservice.Template.ServiceDefaults.BuilderExtensions.ConfigureOpenTelemetry``1(``0)">
             <summary>
-            Конфигурирование Open Telemetry.
+                Конфигурирование Open Telemetry.
             </summary>
             <param name="builder">builder.</param>
             <typeparam name="TBuilder">тип builder.</typeparam>
@@ -36,7 +38,7 @@
         </member>
         <member name="M:Microservice.Template.ServiceDefaults.BuilderExtensions.AddOpenTelemetryExporters``1(``0)">
             <summary>
-            Регистрация в приложении экспортеры для OpenTelemetry.
+                Регистрация в приложении экспортеры для OpenTelemetry.
             </summary>
             <param name="builder">builder.</param>
             <typeparam name="TBuilder">Тип builder.</typeparam>
@@ -44,7 +46,7 @@
         </member>
         <member name="M:Microservice.Template.ServiceDefaults.BuilderExtensions.AddDefaultHealthChecks``1(``0)">
             <summary>
-            Добавление Health Checks.
+                Добавление Health Checks.
             </summary>
             <param name="builder">builder.</param>
             <typeparam name="TBuilder">Тип builder.</typeparam>

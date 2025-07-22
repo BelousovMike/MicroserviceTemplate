@@ -6,82 +6,82 @@
     <members>
         <member name="T:Microservice.Template.Core.WeatherForecastAggregate.Summary">
             <summary>
-            Cводные данные о погоде.
+                Cводные данные о погоде.
             </summary>
         </member>
         <member name="F:Microservice.Template.Core.WeatherForecastAggregate.Summary.Freezing">
             <summary>
-            Заморозки.
+                Заморозки.
             </summary>
         </member>
         <member name="F:Microservice.Template.Core.WeatherForecastAggregate.Summary.Bracing">
             <summary>
-            Прохладно.
+                Прохладно.
             </summary>
         </member>
         <member name="F:Microservice.Template.Core.WeatherForecastAggregate.Summary.Chilly">
             <summary>
-            Свежо.
+                Свежо.
             </summary>
         </member>
         <member name="F:Microservice.Template.Core.WeatherForecastAggregate.Summary.Cool">
             <summary>
-            Холодно.
+                Холодно.
             </summary>
         </member>
         <member name="F:Microservice.Template.Core.WeatherForecastAggregate.Summary.Mild">
             <summary>
-            Тепло.
+                Тепло.
             </summary>
         </member>
         <member name="F:Microservice.Template.Core.WeatherForecastAggregate.Summary.Warm">
             <summary>
-            Очень тепло.
+                Очень тепло.
             </summary>
         </member>
         <member name="F:Microservice.Template.Core.WeatherForecastAggregate.Summary.Balmy">
             <summary>
-            Комфортная.
+                Комфортная.
             </summary>
         </member>
         <member name="F:Microservice.Template.Core.WeatherForecastAggregate.Summary.Hot">
             <summary>
-            Жарко.
+                Жарко.
             </summary>
         </member>
         <member name="F:Microservice.Template.Core.WeatherForecastAggregate.Summary.Sweltering">
             <summary>
-            Душно.
+                Душно.
             </summary>
         </member>
         <member name="F:Microservice.Template.Core.WeatherForecastAggregate.Summary.Scorching">
             <summary>
-            Пекло.
+                Пекло.
             </summary>
         </member>
         <member name="T:Microservice.Template.Core.WeatherForecastAggregate.WeatherForecast">
             <summary>
-            Прогноз погоды.
+                Прогноз погоды.
             </summary>
         </member>
         <member name="P:Microservice.Template.Core.WeatherForecastAggregate.WeatherForecast.Date">
             <summary>
-            Дата.
+                Дата.
             </summary>
         </member>
         <member name="P:Microservice.Template.Core.WeatherForecastAggregate.WeatherForecast.TemperatureC">
             <summary>
-            Температура по Цельсию.
+                Температура по Цельсию.
             </summary>
         </member>
         <member name="P:Microservice.Template.Core.WeatherForecastAggregate.WeatherForecast.TemperatureF">
             <summary>
-            Температура по Фаренгейту.
+                Температура по Фаренгейту.
             </summary>
         </member>
         <member name="P:Microservice.Template.Core.WeatherForecastAggregate.WeatherForecast.Summary">
             <summary>
-             Cводные данные о погоде.
+                Cводные данные о погоде.
             </summary>
         </member>
     </members>

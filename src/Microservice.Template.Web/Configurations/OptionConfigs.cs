@@ -18,7 +18,7 @@ internal static class OptionConfigs
         this IServiceCollection services,
         IConfiguration configuration,
         WebApplicationBuilder builder)
-    {
+        {
         // конфигурация сервисов.
         // services.AddScoped<IAnyService, AnyService>();
 

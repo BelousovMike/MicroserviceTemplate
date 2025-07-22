@@ -5,4 +5,5 @@
 // Получение weatherforecast
 GET {{host}}:{{port}}/weatherforecast
 Accept: application/json
+
 ###
