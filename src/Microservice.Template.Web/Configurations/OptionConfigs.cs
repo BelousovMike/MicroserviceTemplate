@@ -10,7 +10,6 @@ internal static class OptionConfigs
     /// </summary>
     /// <param name="services">Коллекция сервисов для регистрации опций.</param>
     /// <param name="configuration">Конфигурация приложения для чтения настроек.</param>
-    /// <param name="logger">Логгер для записи информации о процессе конфигурации.</param>
     /// <param name="builder">Построитель веб-приложения для доступа к дополнительным сервисам.</param>
     /// <returns>
     /// <see cref="IServiceCollection"/> с зарегистрированными конфигурационными опциями.
@@ -18,7 +17,6 @@ internal static class OptionConfigs
     public static IServiceCollection AddOptionConfigs(
         this IServiceCollection services,
         IConfiguration configuration,
-        Microsoft.Extensions.Logging.ILogger logger,
         WebApplicationBuilder builder)
     {
         // конфигурация сервисов.
@@ -44,8 +42,6 @@ internal static class OptionConfigs
                 config.Path = "/listservices";
             });
         }
-
-        logger.LogInformation("{Project} сконфигурирован.", "Options");
 
         return services;
     }
