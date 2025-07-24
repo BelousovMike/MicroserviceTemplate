@@ -60,7 +60,8 @@
             "SA1623": false,
             "SA1101": false,
             "SA1633": false,
-            "SA1309": false
+            "SA1309": false,
+            "SA1206": false
         }
     }
 }
