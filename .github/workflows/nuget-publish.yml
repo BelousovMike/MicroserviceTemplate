@@ -49,6 +49,6 @@ jobs:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
       - name: Publish to GitHub Packages
-        run: dotnet nuget push ./nupkg/BM.MicroserviceTemplate.NET.*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/BelousovMike/index.json" --skip-duplicate
+        run: dotnet nuget push ./nupkg/BM.MicroserviceTemplate.NET.*.nupkg --api-key ${{ secrets.PACKAGE_TOKEN }} --source "https://nuget.pkg.github.com/BelousovMike/index.json" --skip-duplicate
         env:
-          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
