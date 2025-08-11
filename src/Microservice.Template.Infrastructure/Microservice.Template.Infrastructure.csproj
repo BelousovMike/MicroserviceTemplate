@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.1.3" />
-  
 
-  
+
+
     <ItemGroup>
       <PackageReference Include="Ardalis.SharedKernel" />
       <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" />
@@ -27,10 +27,5 @@
       <Folder Include="Data\Config\" />
       <Folder Include="Data\Migrations\" />
     </ItemGroup>
-
-    <ItemGroup>
-      <AdditionalFiles Include="..\..\stylecop.json" />
-    </ItemGroup>
-
 
 </Project>

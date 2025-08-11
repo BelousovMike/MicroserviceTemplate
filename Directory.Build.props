@@ -12,9 +12,6 @@
         <StyleCopTreatErrorsAsWarnings>true</StyleCopTreatErrorsAsWarnings>
         <StyleCopEnabled>true</StyleCopEnabled>
     </PropertyGroup>
-    <PropertyGroup>
-        <NoWarn>1591</NoWarn>
-    </PropertyGroup>
     <ItemGroup>
         <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json"/>
     </ItemGroup>
