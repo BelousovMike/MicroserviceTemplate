@@ -1,4 +1,6 @@
-﻿IDistributedApplicationBuilder builder = DistributedApplication.CreateBuilder(args);
+﻿using Aspire.Hosting;
+
+IDistributedApplicationBuilder builder = DistributedApplication.CreateBuilder(args);
 builder.AddProject<Projects.Microservice_Template_Web>("web");
 await builder.Build()
     .RunAsync()
