@@ -7,6 +7,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <IsAspireHost>true</IsAspireHost>
     <UserSecretsId>c540eeb6-e06b-4456-a539-be58dd8b88c7</UserSecretsId>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>SA0001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
