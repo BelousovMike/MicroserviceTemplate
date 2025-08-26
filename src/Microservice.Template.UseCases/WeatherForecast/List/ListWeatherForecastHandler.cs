@@ -10,16 +10,16 @@ public class ListWeatherForecastHandler(IListWeatherForecastQueryService service
     : IQueryHandler<ListWeatherForecastQuery, Result<IEnumerable<WeatherForecastDto>>>
     {
     /// <summary>
-    /// Обработка комманды.
+    /// Обрабатывает запрос на получение списка прогнозов погоды.
     /// </summary>
-    /// <param name="request">Запрос.</param>
-    /// <param name="cancellationToken">Токен отмены.</param>
-    /// <returns>Коллекция <see cref="WeatherForecastDto"/>.</returns>
+    /// <param name="request">Запрос на получение списка прогнозов.</param>
+    /// <param name="cancellationToken">Токен отмены операции.</param>
+    /// <returns>Результат выполнения запроса с коллекцией <see cref="WeatherForecastDto"/>.</returns>
     public async Task<Result<IEnumerable<WeatherForecastDto>>> Handle(
         ListWeatherForecastQuery request,
         CancellationToken cancellationToken)
         {
-        IEnumerable<WeatherForecastDto> result = await service.ListAsync()
+        IEnumerable<WeatherForecastDto> result = await service.GetAllAsync()
             .ConfigureAwait(false);
         return Result.Success(result);
     }
