@@ -10,7 +10,11 @@ public static class AppDbContextExtensions
     /// </summary>
     /// <param name="services">Коллекция сервисов.</param>
     /// <param name="connectionString">Строка подключения к базе данных.</param>
-    public static void AddApplicationDbContext(this IServiceCollection services, string connectionString) =>
+    /// <returns>Коллекция сервисов с добавленным контекстом базы данных.</returns>
+    public static IServiceCollection AddApplicationDbContext(this IServiceCollection services, string connectionString)
+    {
         services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(connectionString));
+        return services;
+    }
 }

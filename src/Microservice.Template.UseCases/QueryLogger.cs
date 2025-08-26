@@ -16,13 +16,13 @@ public sealed class QueryLogger<TCommand, TResult>(ILogger<TCommand> logger)
     where TCommand : ICommand<TResult>
     {
     /// <summary>
-    /// Метод обработки.
+    /// Выполняет команду с логированием.
     /// </summary>
-    /// <param name="command">Команда.</param>
-    /// <param name="next">Следующее действие в конвейере.</param>
-    /// <param name="ct">Токен отмены.</param>
+    /// <param name="command">Команда для выполнения.</param>
+    /// <param name="next">Следующее действие в конвейере обработки.</param>
+    /// <param name="ct">Токен отмены операции.</param>
     /// <returns>
-    /// <see cref="Task{TResult}"/> представляющий асинхронную операцию.
+    /// Задача, представляющая асинхронную операцию выполнения команды.
     /// Результат содержит объект типа <typeparamref name="TResult"/>.
     /// </returns>
     public async Task<TResult> ExecuteAsync(

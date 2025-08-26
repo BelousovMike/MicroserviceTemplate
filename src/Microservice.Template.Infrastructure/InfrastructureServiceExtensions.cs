@@ -10,24 +10,38 @@ namespace Microservice.Template.Infrastructure;
 public static class InfrastructureServiceExtensions
 {
     /// <summary>
-    /// Добавление инфраструктурных сервисов в DI.
+    /// Добавляет инфраструктурные сервисы в DI-контейнер.
     /// </summary>
     /// <param name="services">Коллекция сервисов.</param>
-    /// <param name="config">Конфигурация.</param>
-    /// <returns><see cref="IServiceCollection"/> с добавленными инфраструктурными сервисами.</returns>
+    /// <param name="config">Конфигурация приложения.</param>
+    /// <returns>Коллекция сервисов с добавленными инфраструктурными сервисами.</returns>
     public static IServiceCollection AddInfrastructureServices(
         this IServiceCollection services,
-        ConfigurationManager config)
-        {
+        ConfigurationManager config) =>
+            services.AddDbContext(config)
+                .AddDataAccessServices();
+
+    /// <summary>
+    /// Добавляет контекст базы данных в коллекцию сервисов.
+    /// </summary>
+    /// <param name="services">Коллекция сервисов.</param>
+    /// <param name="config">Конфигурация приложения.</param>
+    /// <returns>Коллекция сервисов с добавленным контекстом базы данных.</returns>
+    private static IServiceCollection AddDbContext(this IServiceCollection services, ConfigurationManager config)
+    {
         var connectionString = config.GetConnectionString("DefaultConnection");
         Guard.Against.Null(connectionString);
         services.AddApplicationDbContext(connectionString);
+        return services;
+    }
 
-        // Интерфейсы и сервисы из Core тоже нужно подключать здесь.
+    /// <summary>
+    /// Добавляет сервисы доступа к данным в коллекцию сервисов.
+    /// </summary>
+    /// <param name="services">Коллекция сервисов.</param>
+    /// <returns>Коллекция сервисов с добавленными сервисами доступа к данным.</returns>
+    private static IServiceCollection AddDataAccessServices(this IServiceCollection services) =>
         services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
             .AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>))
             .AddScoped<IListWeatherForecastQueryService, ListWeatherForecastQueryService>();
-
-        return services;
-    }
 }

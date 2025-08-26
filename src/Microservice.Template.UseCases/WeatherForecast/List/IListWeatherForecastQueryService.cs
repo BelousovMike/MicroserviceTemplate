@@ -9,8 +9,8 @@ namespace Microservice.Template.UseCases.WeatherForecast.List;
 public interface IListWeatherForecastQueryService
 {
     /// <summary>
-    /// Метод получения информации о погоде.
+    /// Получает список прогнозов погоды.
     /// </summary>
-    /// <returns>Возвращает коллекцию <see cref="WeatherForecastDto"/> или пустую коллекцию.</returns>
-    Task<IEnumerable<WeatherForecastDto>> ListAsync();
+    /// <returns>Коллекция прогнозов погоды <see cref="WeatherForecastDto"/>.</returns>
+    Task<IEnumerable<WeatherForecastDto>> GetAllAsync();
 }

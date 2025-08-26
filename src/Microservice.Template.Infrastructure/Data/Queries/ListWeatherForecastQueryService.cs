@@ -21,14 +21,14 @@ public class ListWeatherForecastQueryService(AppDbContext db) : IListWeatherFore
     private readonly AppDbContext _db = db;
 
     /// <summary>
-    /// Метод получения информации о погоде.
+    /// Получает список прогнозов погоды.
     /// </summary>
-    /// <returns>Возвращает коллекцию <see cref="WeatherForecastDto"/> или пустую коллекцию.</returns>
+    /// <returns>Коллекция прогнозов погоды <see cref="WeatherForecastDto"/>.</returns>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
         "Security",
         "CA5394:Do not use insecure randomness",
         Justification = "Пример. Не используется в Production")]
-    public async Task<IEnumerable<WeatherForecastDto>> ListAsync()
+    public async Task<IEnumerable<WeatherForecastDto>> GetAllAsync()
     {
         var result = Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {

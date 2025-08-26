@@ -59,6 +59,10 @@ public class Summary : SmartEnum<Summary>
     /// </summary>
     public static readonly Summary Scorching = new(nameof(Scorching), 9);
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Style",
+        "SA1642",
+        Justification = "Приватный конструктор для SmartEnum")]
     private Summary(string name, int value)
         : base(name, value)
         {
