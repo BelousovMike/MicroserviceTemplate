@@ -14,7 +14,7 @@ namespace Microservice.Template.Web.WeatherForecasts;
 internal sealed class List(ISender sender) : EndpointWithoutRequest<WeatherForecastListResponse>
 {
     /// <summary>
-    /// Конфигурирование.
+    /// Настраивает эндпоинт для получения списка прогнозов погоды.
     /// </summary>
     public override void Configure()
     {
@@ -31,11 +31,11 @@ internal sealed class List(ISender sender) : EndpointWithoutRequest<WeatherForec
     }
 
     /// <summary>
-    /// Выполняет обработку HTTP GET запроса для получения списка прогнозов.
+    /// Обрабатывает HTTP GET запрос для получения списка прогнозов погоды.
     /// </summary>
     /// <param name="ct">Токен для отмены асинхронной операции.</param>
     /// <returns>
-    /// <see cref="Task"/>, представляющий асинхронную операцию обработки запроса.
+    /// Задача, представляющая асинхронную операцию обработки запроса.
     /// </returns>
     public override async Task HandleAsync(CancellationToken ct)
     {
@@ -47,7 +47,7 @@ internal sealed class List(ISender sender) : EndpointWithoutRequest<WeatherForec
         {
             Response = new WeatherForecastListResponse()
             {
-                Weathers =
+                Forecasts =
                 [
                     .. result.Value.Select(c => new WeatherForecastRecord(
                         c.Date,

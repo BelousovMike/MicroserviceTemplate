@@ -8,5 +8,5 @@ internal sealed class WeatherForecastListResponse
     /// <summary>
     /// Список прогнозов погоды.
     /// </summary>
-    public List<WeatherForecastRecord> Weathers { get; set; } = [];
+    public List<WeatherForecastRecord> Forecasts { get; set; } = [];
 }

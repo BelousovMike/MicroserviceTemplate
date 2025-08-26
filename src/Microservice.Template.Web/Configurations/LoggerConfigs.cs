@@ -6,10 +6,10 @@
 internal static class LoggerConfigs
 {
     /// <summary>
-    /// Добавление логгера в DI.
+    /// Добавляет конфигурацию логирования в приложение.
     /// </summary>
-    /// <param name="builder">Экземпляр <see cref="WebApplicationBuilder"/>, используемый для конфигурирования сервисов и параметров приложения.</param>
-    /// <returns><see cref="WebApplicationBuilder"/> с добавленным Serilog.</returns>
+    /// <param name="builder">Построитель веб-приложения.</param>
+    /// <returns>Построитель с добавленной конфигурацией логирования.</returns>
     public static WebApplicationBuilder AddLoggerConfigs(this WebApplicationBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(builder);

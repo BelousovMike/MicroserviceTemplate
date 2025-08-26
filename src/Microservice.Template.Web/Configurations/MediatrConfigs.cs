@@ -9,10 +9,10 @@ namespace Microservice.Template.Web.Configurations;
 internal static class MediatrConfigs
 {
     /// <summary>
-    /// Метод-опсширение для конфигурации MediatR.
+    /// Добавляет конфигурацию MediatR в DI-контейнер.
     /// </summary>
-    /// <param name="services">Коллекция <see cref="IServiceCollection"/>.</param>
-    /// <returns>Коллекция <see cref="IServiceCollection"/>с настроенным MediatR.</returns>
+    /// <param name="services">Коллекция сервисов.</param>
+    /// <returns>Коллекция сервисов с настроенным MediatR.</returns>
     public static IServiceCollection AddMediatrConfigs(this IServiceCollection services)
     {
         Assembly?[] mediatRAssemblies = new[]
@@ -21,10 +21,8 @@ internal static class MediatrConfigs
             Assembly.GetAssembly(typeof(ListWeatherForecastQuery)), // из UseCases
         };
 
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(mediatRAssemblies!))
+        return services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(mediatRAssemblies!))
             .AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>))
             .AddScoped<IDomainEventDispatcher, MediatRDomainEventDispatcher>();
-
-        return services;
     }
 }

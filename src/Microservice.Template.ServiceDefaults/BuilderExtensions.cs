@@ -18,10 +18,10 @@ namespace Microservice.Template.ServiceDefaults;
 public static class BuilderExtensions
 {
     /// <summary>
-    /// Маппинг стандартных эндпоинтов.
+    /// Настраивает стандартные эндпоинты приложения.
     /// </summary>
-    /// <param name="app">Конфигуратор роутов.</param>
-    /// <returns>Конфигуратор с маппингом.</returns>
+    /// <param name="app">Конфигуратор веб-приложения.</param>
+    /// <returns>Конфигуратор с настроенными эндпоинтами.</returns>
     public static WebApplication? MapDefaultEndpoints(this WebApplication? app)
     {
         ArgumentNullException.ThrowIfNull(app);
@@ -46,12 +46,12 @@ public static class BuilderExtensions
     }
 
     /// <summary>
-    /// Метод-расширение, который добавляет в DI-контейнер стандартные сервисы для микросервисного приложения на .NET Aspire.
+    /// Добавляет стандартные сервисы для микросервисного приложения на .NET Aspire в DI-контейнер.
     /// </summary>
-    /// <param name="builder">builder.</param>
-    /// <typeparam name="TBuilder">Тип builder.</typeparam>
-    /// <returns>Возвращает builder со стандартными сервисами.</returns>
-    public static TBuilder AddServiceDefaults<TBuilder>(this TBuilder builder)
+    /// <param name="builder">Построитель приложения.</param>
+    /// <typeparam name="TBuilder">Тип построителя.</typeparam>
+    /// <returns>Построитель с добавленными стандартными сервисами.</returns>
+    public static TBuilder AddAspireDefaults<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
         {
         builder.ConfigureOpenTelemetry();
@@ -73,11 +73,11 @@ public static class BuilderExtensions
     }
 
     /// <summary>
-    /// Конфигурирование Open Telemetry.
+    /// Настраивает OpenTelemetry для приложения.
     /// </summary>
-    /// <param name="builder">builder.</param>
-    /// <typeparam name="TBuilder">тип builder.</typeparam>
-    /// <returns>builder с настроенным Open Telemetry.</returns>
+    /// <param name="builder">Построитель приложения.</param>
+    /// <typeparam name="TBuilder">Тип построителя.</typeparam>
+    /// <returns>Построитель с настроенным OpenTelemetry.</returns>
     private static TBuilder ConfigureOpenTelemetry<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
         {
@@ -101,11 +101,11 @@ public static class BuilderExtensions
     }
 
     /// <summary>
-    /// Регистрация в приложении экспортеры для OpenTelemetry.
+    /// Добавляет экспортеры OpenTelemetry в приложение.
     /// </summary>
-    /// <param name="builder">builder.</param>
-    /// <typeparam name="TBuilder">Тип builder.</typeparam>
-    /// <returns>builder с конфигурацией.</returns>
+    /// <param name="builder">Построитель приложения.</param>
+    /// <typeparam name="TBuilder">Тип построителя.</typeparam>
+    /// <returns>Построитель с настроенными экспортерами OpenTelemetry.</returns>
     private static TBuilder AddOpenTelemetryExporters<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
         {
@@ -123,17 +123,16 @@ public static class BuilderExtensions
     }
 
     /// <summary>
-    /// Добавление Health Checks.
+    /// Добавляет стандартные проверки работоспособности в приложение.
     /// </summary>
-    /// <param name="builder">builder.</param>
-    /// <typeparam name="TBuilder">Тип builder.</typeparam>
-    /// <returns>builder с подключенным Health Checks.</returns>
+    /// <param name="builder">Построитель приложения.</param>
+    /// <typeparam name="TBuilder">Тип построителя.</typeparam>
+    /// <returns>Построитель с настроенными проверками работоспособности.</returns>
     private static TBuilder AddDefaultHealthChecks<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
         {
         builder.Services.AddHealthChecks()
             .AddCheck("self", () => HealthCheckResult.Healthy(), ["live"]);
-
         return builder;
     }
 }
